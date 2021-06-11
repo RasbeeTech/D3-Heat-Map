@@ -17,18 +17,15 @@ h1 {
     text-align: center;
     padding: 30px;
 }
-.visContainer {
-    background-color: lightgrey;
-}
 .cell:hover {
-    fill: brown;
+    fill: green;
 }
 #tooltip {
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    text-align: center;
+    text-align: left;
     width: 150px;
     height: 50px;
     padding: 2px;
