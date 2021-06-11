@@ -33,12 +33,15 @@ function heatMap(dataset) {
                      .range([padding, width-padding]);
     
     const yScale = d3.scaleLinear()
-                      .domain([1, 12])
+                      .domain([1, 13])
                       .range([height-padding, padding])
 
     // Set x and y axis displays.
     var xAxis = d3.axisBottom(xScale).tickFormat(d3.format('d'));
-    var yAxis = d3.axisLeft(yScale);
+    var yAxis = d3.axisLeft(d3.scaleBand()
+                              .domain([1,2,3,4,5,6,7,8,9,10,11,12])
+                              .range([height-padding, padding])
+                              .padding(0.01));
 
     // Create and append SVG.
     const svg = d3.select('.visContainer')
@@ -76,7 +79,7 @@ function heatMap(dataset) {
        .attr('x', (d) => xScale(d.year))
        .attr('y', (d) => height - yScale(d.month))
        .attr('width', (d) => barWidth)
-       .attr('height', (d) => yScale(d.month) - padding)
+       .attr('height', (d) => barHeight)
 
     // Display x and y axis.
     svg.append('g')
